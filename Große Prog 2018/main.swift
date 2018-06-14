@@ -9,4 +9,8 @@
 import Foundation
 
 print("Hello, World!")
+let path = "/Users/hfs23/Desktop/N_LinearerGraph.in"
+let input = LeseAusDatei()
+var model: Model = input.getModelAusDatei(path: path)
+print("done")
 
