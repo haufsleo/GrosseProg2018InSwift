@@ -1,0 +1,10 @@
+//**********************************************************************************
+//+ Testfall Linearer Graph - Wasserfallmodell verbessert aus IHK-Aufgabenstellung
+//**********************************************************************************
+//Vorgangsnummer; Vorgangsbezeichnung; Dauer; Vorgänger; Nachfolger
+1; Problemanalyse; 2; -; 2
+2; Grobplanung; 3; 1; 3
+3; Feinplanung; 3; 2; 4
+4; Implementierung; 10; 3; 5
+5; Testphase; 5; 4; 6;
+6; Einsatz und Wartung; 5; 5; -

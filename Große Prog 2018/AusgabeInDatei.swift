@@ -9,6 +9,7 @@
 import Foundation
 public class AusgabeInDatei: Ausgabe{
     public func schreibeModelInDatei(filename: String){
+        
         do {
             // get the documents folder url
             if let documentDirectory = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first {
@@ -19,8 +20,7 @@ public class AusgabeInDatei: Ausgabe{
                 
                 // writing to disk
                 try text.write(to: fileURL, atomically: false, encoding: .utf8)
-                print("saving was successful")
-                // any code posterior code goes here
+                print("Datei erfolgreich auf dem Desktop als " + filename + " gespeichert.")
             }
         } catch {
             print("error:", error)

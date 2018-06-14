@@ -1,0 +1,21 @@
+//************************************************
+//+ Beispiel 5 IT-Installation
+//************************************************
+//Vorgangsnummer; Vorgangsbezeichnung; Dauer; Vorgänger; Nachfolger
+1; Infrastrukturbedarf ermitteln; 1; -; 2,3
+2; Arbeitsplatzbedarf ermitteln; 2; 1; 5
+3; Netzwerkplan entwerfen; 1;1; 4,7,8
+4; Peripheriebedarf ermitteln; 1; 3; 8
+5; Hardware PC + Server beschaffen; 4; 2; 6,7,9
+6; Software beschaffen; 2; 5; 12
+7; Netzwerkzubehör beschaffen; 5; 3,5; 11
+8; Peripherie beschaffen; 1; 3,4; 13
+9; Hardware PC + Server aufbauen; 6; 5; 10
+10; Server installieren; 3; 9; 12,13,15
+11; Netzwerk aufbauen; 5; 7; 12,13
+12; PC-Image anlegen; 1; 6,10,11; 16
+13; Peripherie anschließen; 1; 8,10,11; 14
+14; Netzwerkplan dokumentieren; 2; 13; 17
+15; Server-Image anlegen; 1; 10; 17
+16; PC-Remote installieren; 1; 12; 17
+17; Gesamtdokumentation erstellen; 3; 14,15,16; -
