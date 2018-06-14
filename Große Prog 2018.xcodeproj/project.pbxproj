@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EFD3D99420D30DBA00A7D665 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD3D99220D30DB900A7D665 /* Model.swift */; };
+		EFD3D99520D30DBA00A7D665 /* Knoten.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD3D99320D30DB900A7D665 /* Knoten.swift */; };
 		EFE7F8CA20D1B4080073C1BA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8C920D1B4080073C1BA /* main.swift */; };
 		EFE7F8E920D1B8390073C1BA /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8E820D1B8390073C1BA /* Controller.swift */; };
-		EFE7F8EC20D1B8F00073C1BA /* Knoten.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8EA20D1B8F00073C1BA /* Knoten.swift */; };
-		EFE7F8ED20D1B8F00073C1BA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8EB20D1B8F00073C1BA /* Model.swift */; };
 		EFE7F8EF20D27E1A0073C1BA /* LeseAusDatei.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8EE20D27E1A0073C1BA /* LeseAusDatei.swift */; };
 		EFE7F8F120D2FE670073C1BA /* Ausgabe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8F020D2FE670073C1BA /* Ausgabe.swift */; };
 		EFE7F8F320D306D30073C1BA /* AusgabeInKonsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8F220D306D30073C1BA /* AusgabeInKonsole.swift */; };
@@ -30,11 +30,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EFD3D99220D30DB900A7D665 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = "../../../../../Desktop/Große Prog 2018 in Swift/Große Prog 2018/Große Prog 2018/Model.swift"; sourceTree = "<group>"; };
+		EFD3D99320D30DB900A7D665 /* Knoten.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Knoten.swift; path = "../../../../../Desktop/Große Prog 2018 in Swift/Große Prog 2018/Große Prog 2018/Knoten.swift"; sourceTree = "<group>"; };
 		EFE7F8C620D1B4080073C1BA /* Große Prog 2018 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Große Prog 2018"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE7F8C920D1B4080073C1BA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		EFE7F8E820D1B8390073C1BA /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
-		EFE7F8EA20D1B8F00073C1BA /* Knoten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Knoten.swift; path = ../../Knoten.swift; sourceTree = "<group>"; };
-		EFE7F8EB20D1B8F00073C1BA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = ../../Model.swift; sourceTree = "<group>"; };
 		EFE7F8EE20D27E1A0073C1BA /* LeseAusDatei.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeseAusDatei.swift; sourceTree = "<group>"; };
 		EFE7F8F020D2FE670073C1BA /* Ausgabe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ausgabe.swift; sourceTree = "<group>"; };
 		EFE7F8F220D306D30073C1BA /* AusgabeInKonsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AusgabeInKonsole.swift; sourceTree = "<group>"; };
@@ -71,10 +71,10 @@
 		EFE7F8C820D1B4080073C1BA /* Große Prog 2018 */ = {
 			isa = PBXGroup;
 			children = (
+				EFD3D99320D30DB900A7D665 /* Knoten.swift */,
+				EFD3D99220D30DB900A7D665 /* Model.swift */,
 				EFE7F8C920D1B4080073C1BA /* main.swift */,
 				EFE7F8E820D1B8390073C1BA /* Controller.swift */,
-				EFE7F8EA20D1B8F00073C1BA /* Knoten.swift */,
-				EFE7F8EB20D1B8F00073C1BA /* Model.swift */,
 				EFE7F8EE20D27E1A0073C1BA /* LeseAusDatei.swift */,
 				EFE7F8F020D2FE670073C1BA /* Ausgabe.swift */,
 				EFE7F8F220D306D30073C1BA /* AusgabeInKonsole.swift */,
@@ -140,13 +140,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFE7F8EC20D1B8F00073C1BA /* Knoten.swift in Sources */,
+				EFD3D99420D30DBA00A7D665 /* Model.swift in Sources */,
 				EFE7F8F320D306D30073C1BA /* AusgabeInKonsole.swift in Sources */,
 				EFE7F8CA20D1B4080073C1BA /* main.swift in Sources */,
 				EFE7F8F120D2FE670073C1BA /* Ausgabe.swift in Sources */,
 				EFE7F8E920D1B8390073C1BA /* Controller.swift in Sources */,
+				EFD3D99520D30DBA00A7D665 /* Knoten.swift in Sources */,
 				EFE7F8F520D308A50073C1BA /* AusgabeInDatei.swift in Sources */,
-				EFE7F8ED20D1B8F00073C1BA /* Model.swift in Sources */,
 				EFE7F8EF20D27E1A0073C1BA /* LeseAusDatei.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
