@@ -12,6 +12,8 @@
 		EFE7F8EC20D1B8F00073C1BA /* Knoten.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8EA20D1B8F00073C1BA /* Knoten.swift */; };
 		EFE7F8ED20D1B8F00073C1BA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8EB20D1B8F00073C1BA /* Model.swift */; };
 		EFE7F8EF20D27E1A0073C1BA /* LeseAusDatei.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8EE20D27E1A0073C1BA /* LeseAusDatei.swift */; };
+		EFE7F8F120D2FE670073C1BA /* Ausgabe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8F020D2FE670073C1BA /* Ausgabe.swift */; };
+		EFE7F8F320D306D30073C1BA /* AusgabeInKonsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE7F8F220D306D30073C1BA /* AusgabeInKonsole.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +35,8 @@
 		EFE7F8EA20D1B8F00073C1BA /* Knoten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Knoten.swift; path = ../../Knoten.swift; sourceTree = "<group>"; };
 		EFE7F8EB20D1B8F00073C1BA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = ../../Model.swift; sourceTree = "<group>"; };
 		EFE7F8EE20D27E1A0073C1BA /* LeseAusDatei.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeseAusDatei.swift; sourceTree = "<group>"; };
+		EFE7F8F020D2FE670073C1BA /* Ausgabe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ausgabe.swift; sourceTree = "<group>"; };
+		EFE7F8F220D306D30073C1BA /* AusgabeInKonsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AusgabeInKonsole.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 				EFE7F8EA20D1B8F00073C1BA /* Knoten.swift */,
 				EFE7F8EB20D1B8F00073C1BA /* Model.swift */,
 				EFE7F8EE20D27E1A0073C1BA /* LeseAusDatei.swift */,
+				EFE7F8F020D2FE670073C1BA /* Ausgabe.swift */,
+				EFE7F8F220D306D30073C1BA /* AusgabeInKonsole.swift */,
 			);
 			path = "Große Prog 2018";
 			sourceTree = "<group>";
@@ -132,7 +138,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFE7F8EC20D1B8F00073C1BA /* Knoten.swift in Sources */,
+				EFE7F8F320D306D30073C1BA /* AusgabeInKonsole.swift in Sources */,
 				EFE7F8CA20D1B4080073C1BA /* main.swift in Sources */,
+				EFE7F8F120D2FE670073C1BA /* Ausgabe.swift in Sources */,
 				EFE7F8E920D1B8390073C1BA /* Controller.swift in Sources */,
 				EFE7F8ED20D1B8F00073C1BA /* Model.swift in Sources */,
 				EFE7F8EF20D27E1A0073C1BA /* LeseAusDatei.swift in Sources */,

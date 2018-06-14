@@ -85,13 +85,15 @@ class Controller: NSObject {
          *
          * Setze FAZ der Startknoten
          */
-        for startK in model.startknoten {
-            startK.faz = 0
+        //for startK in model.startknoten {
+        for i in 0..<model.startknoten.count {
+            model.startknoten[i].faz = 0
         }
         
         // Setze FEZ aller Knoten als FEZ = FAZ + Dauer
-        for startK in model.startknoten {
-            self.setFezAndFaz(aktKnoten: startK)
+        //for startK in model.startknoten {
+        for i in 0..<model.startknoten.count{
+            self.setFezAndFaz(aktKnoten: &model.startknoten[i])
         }
         
         /*
@@ -104,28 +106,32 @@ class Controller: NSObject {
          * Für den letzten Vorgang ist der früheste Endzeitpunkt (FEZ) auch der
          * späteste Endzeitpunkt (SEZ), also SEZ = FEZ.
          */
-        for endK in model.endknoten {
-            endK.sez = endK.fez
+        //for endK in model.endknoten {
+        for i in 0..<model.endknoten.count{
+            model.endknoten[i].sez = model.endknoten[i].fez
         }
         
         /*
          * Für den spätesten Anfangszeitpunkt gilt: SAZ = SEZ – Dauer.
          */
-        for endK in model.endknoten {
-            self.setSazAndSez(aktKnoten: endK)
+        //for endK in model.endknoten {
+        for i in 0..<model.endknoten.count{
+            self.setSazAndSez(aktKnoten: &model.endknoten[i])
         }
         
         // 3. Phase: Ermittlung der Zeitreserven
-        for startK in model.startknoten {
+        //for startK in model.startknoten {
+        for i in 0..<model.startknoten.count{
+            
             /*
              * Berechnung des Gesamtpuffers für jeden Knoten
              */
-            self.setGp(aktKnoten: startK)
+            self.setGp(aktKnoten: &model.startknoten[i])
             
             /*
              * Berechnung des freien Puffers
              */
-            self.setFp(aktKnoten: startK)
+            self.setFp(aktKnoten: &model.startknoten[i])
         }
         
         /*
@@ -151,9 +157,12 @@ class Controller: NSObject {
          * hatKeineZyklenHelper auf. Falls ein Ergebnis negativ ausfällt wird false
          * zurückgegeben
          */
-        for s in self.model.startknoten{
+        //for s in self.model.startknoten{
+        for i in 0..<self.model.startknoten.count{
+            
+            
             self.validationsListe = []
-            check.append(self.hatKeineZyklenHelper(aktKnoten: s))
+            check.append(self.hatKeineZyklenHelper(aktKnoten: &self.model.startknoten[i]))
             if check.contains(false){
                 model.zyklus = self.validationsListe
                 return false
@@ -169,7 +178,7 @@ class Controller: NSObject {
      * @param aktKnoten
      * @return
      */
-    private func hatKeineZyklenHelper(aktKnoten: Knoten)->Bool{
+    private func hatKeineZyklenHelper(aktKnoten: inout Knoten)->Bool{
         // Abbruchbedingung
         if(self.validationsListe.contains(aktKnoten)){
             // Falls aktueller Knoten bereits in ValidationListe enthalten ist, füge
@@ -181,8 +190,9 @@ class Controller: NSObject {
         self.validationsListe.append(aktKnoten)
         // Für jeden nachfolger des aktuellen Knotens führe rekursiv
         // hatKeineZyklenHelper aus und gebe den Wert zurück.
-        for nachfolger in aktKnoten.nachfolger {
-            return self.hatKeineZyklenHelper(aktKnoten:nachfolger)
+        //for nachfolger in aktKnoten.nachfolger {
+        for i in 0..<aktKnoten.nachfolger.count{
+            return self.hatKeineZyklenHelper(aktKnoten: &aktKnoten.nachfolger[i])
         }
         return true
     }
@@ -195,8 +205,11 @@ class Controller: NSObject {
     private func isZusammenhaengend()->Bool{
         self.validationsListe = []
         
-        for startK in self.model.startknoten {
-            isZusammenhaengendHelper(aktKnoten: startK)
+        //for startK in self.model.startknoten {
+        for i in 0..<self.model.startknoten.count{
+            
+            
+            isZusammenhaengendHelper(aktKnoten: &self.model.startknoten[i])
         }
         
         if self.validationsListe.count == self.model.knoten.count{
@@ -206,15 +219,15 @@ class Controller: NSObject {
         }
     }
     
-    private func isZusammenhaengendHelper(aktKnoten: Knoten){
+    private func isZusammenhaengendHelper(aktKnoten: inout Knoten){
         // Falls die ValidationListe den aktuellen Knoten noch nicht enthällt, füge
         // diesen ein.
         if !self.validationsListe.contains(aktKnoten){
             self.validationsListe.append(aktKnoten)
         }
         // rufe isZusammenhaengendHelper für jeden Nachfolger des aktuellen Knotens auf
-        for nachfolger in aktKnoten.nachfolger {
-            self.isZusammenhaengendHelper(aktKnoten: nachfolger)
+        for i in 0..<aktKnoten.nachfolger.count {
+            self.isZusammenhaengendHelper(aktKnoten: &aktKnoten.nachfolger[i])
         }
     }
     
@@ -224,7 +237,7 @@ class Controller: NSObject {
      *
      * @param aktKnoten
      */
-    private func setFezAndFaz(aktKnoten: Knoten){
+    private func setFezAndFaz(aktKnoten: inout Knoten){
         // Für den FEZ gilt: FEZ = FAZ + Dauer
         aktKnoten.fez = aktKnoten.faz + aktKnoten.dauer
         
@@ -233,9 +246,9 @@ class Controller: NSObject {
             aktKnoten.faz = getMaxFezOfVorgaenger(aktKnoten: aktKnoten)
         }
         
-        for nachfolger in aktKnoten.nachfolger {
-            nachfolger.faz = getMaxFezOfVorgaenger(aktKnoten: aktKnoten)
-            setFezAndFaz(aktKnoten: nachfolger)
+        for i in 0..<aktKnoten.nachfolger.count {
+            aktKnoten.nachfolger[i].faz = getMaxFezOfVorgaenger(aktKnoten: aktKnoten.nachfolger[i])
+            setFezAndFaz(aktKnoten: &aktKnoten.nachfolger[i])
         }
     }
     
@@ -249,6 +262,8 @@ class Controller: NSObject {
     private func getMaxFezOfVorgaenger(aktKnoten : Knoten) -> Int{
         var maxValue: Int = Int.min
         for vorgaenger in aktKnoten.vorgaenger {
+        //for i in 0..<aktKnoten.vorgaenger.count{
+        //    var vorgaenger = aktKnoten.vorgaenger[i]
             if vorgaenger.fez > maxValue{
                 maxValue = vorgaenger.fez
             }
@@ -263,7 +278,7 @@ class Controller: NSObject {
      * @param aktKnoten
      *            aktuell betrachteter Knoten
      */
-    private func setSazAndSez(aktKnoten: Knoten){
+    private func setSazAndSez(aktKnoten: inout Knoten){
         // Wenn aktueller Knoten ein Anfangsknoten ist, so wird Sez als minimaler SAZ
         // der Nachfolger gesetzt
         if aktKnoten.vorgaenger.count == 0{
@@ -273,15 +288,15 @@ class Controller: NSObject {
         // SAZ = SEZ – Dauer.
         aktKnoten.saz = aktKnoten.sez - aktKnoten.dauer
         
-        for vorgaenger in aktKnoten.vorgaenger {
+        for i in 0..<aktKnoten.vorgaenger.count {
             /*
              * Der SAZ eines Vorgangs wird SEZ aller unmittelbarer Vorgänger
              *
              * Haben mehrere Vorgänge einen gemeinsamen Vorgänger, so ist dessen SEZ der
              * früheste (kleinste) SAZ aller Nachfolger.
              */
-            vorgaenger.sez = self.getMinSazOfNachfolger(aktKnoten: vorgaenger)
-            setSazAndSez(aktKnoten: vorgaenger)
+            aktKnoten.vorgaenger[i].sez = self.getMinSazOfNachfolger(aktKnoten: aktKnoten.vorgaenger[i])
+            setSazAndSez(aktKnoten: &aktKnoten.vorgaenger[i])
         }
     }
     
@@ -296,6 +311,8 @@ class Controller: NSObject {
     private func getMinSazOfNachfolger(aktKnoten: Knoten) -> Int{
         var minValue = Int.max
         for nachfolger in aktKnoten.nachfolger {
+        //for i in 0..<aktKnoten.nachfolger.count{
+            //var nachfolger = aktKnoten.nachfolger[i]
             if nachfolger.saz < minValue{
                 minValue = nachfolger.saz
             }
@@ -309,14 +326,15 @@ class Controller: NSObject {
      * @param aktKnoten
      *            aktuell betrachteter Knoten
      */
-    private func setGp(aktKnoten: Knoten){
+    private func setGp(aktKnoten: inout Knoten){
         /*
          * Berechnung des Gesamtpuffers für jeden Knoten: GP = SAZ – FAZ = SEZ – FEZ
          */
         aktKnoten.gp = aktKnoten.saz - aktKnoten.faz
         
-        for nachfolger in aktKnoten.nachfolger {
-            setGp(aktKnoten: nachfolger)
+        //for nachfolger in aktKnoten.nachfolger {
+        for i in 0..<aktKnoten.nachfolger.count{
+            setGp(aktKnoten: &aktKnoten.nachfolger[i])
         }
     }
     
@@ -326,15 +344,16 @@ class Controller: NSObject {
      * @param aktKnoten
      *            aktuell betrachteter Knoten
      */
-    private func setFp(aktKnoten: Knoten){
+    private func setFp(aktKnoten: inout Knoten){
         /*
          * Für die Berechnung des freien Puffers gilt: FP= (kleinster FAZ der
          * nachfolgenden Knoten) - FEZ Ist der aktuelle Knoten der Endknoten, so ist der
          * Freie Puffer 0, da FAZ==FEZ
          */
         aktKnoten.fp = self.getMinFazOfNachfolger(aktKnoten: aktKnoten) - aktKnoten.fez
-        for nachfolger in aktKnoten.nachfolger {
-            setFp(aktKnoten: nachfolger)
+        //for nachfolger in aktKnoten.nachfolger {
+        for i in 0..<aktKnoten.nachfolger.count{
+            setFp(aktKnoten: &aktKnoten.nachfolger[i])
         }
     }
     
@@ -351,6 +370,9 @@ class Controller: NSObject {
             return aktKnoten.fez
         }
         for nachfolger in aktKnoten.nachfolger {
+        //for i in 0..<aktKnoten.nachfolger.count{
+            //var nachfolger = aktKnoten.nachfolger[i]
+            
             if(nachfolger.faz < minValue){
                 minValue = nachfolger.faz
             }
@@ -368,9 +390,10 @@ class Controller: NSObject {
         /*
          * Bestimmung der kritischen Vorgänge ausgehend von jedem Startknoten
          */
-        for startK in model.startknoten {
+        //for startK in model.startknoten {
+        for i in 0..<model.startknoten.count{
             var pfad:[Knoten] = []
-            setKritischePfadeHelper(pfad: &pfad, aktKnoten: startK)
+            setKritischePfadeHelper(pfad: &pfad, aktKnoten: model.startknoten[i])
         }
     }
     
@@ -406,6 +429,9 @@ class Controller: NSObject {
             // Führe für alle Nachfolger rekursiv die Methode setKritischePfadehelper aus
             // und durchlaufe so nach Backtraking den virtuellen Baum
             for nachfolger in aktKnoten.nachfolger{
+            //for i in 0..<aktKnoten.nachfolger.count{
+                //var nachfolger = aktKnoten.nachfolger[i]
+                
                 self.setKritischePfadeHelper(pfad: &pfad, aktKnoten: nachfolger)
             }
         }
@@ -438,20 +464,4 @@ class Controller: NSObject {
         
         return true
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
