@@ -8,13 +8,16 @@
 
 import Foundation
 
-print("Hello, World!")
 let path = "/Users/hfs23/Desktop/N_LinearerGraph.in"
 let input = LeseAusDatei()
 var model: Model = input.getModelAusDatei(path: path)
 let c : Controller = Controller(model: model)
 c.calculate()
+
 let ausgabeInKonsole: AusgabeInKonsole = AusgabeInKonsole(model: model)
 ausgabeInKonsole.gebeAufKonsoleAus()
+
+let ausgabeInDatei: AusgabeInDatei = AusgabeInDatei(model: model)
+ausgabeInDatei.schreibeModelInDatei(filename: "meineAusgabe.txt")
 
 print("done")
