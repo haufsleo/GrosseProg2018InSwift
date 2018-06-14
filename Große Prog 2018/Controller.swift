@@ -262,8 +262,6 @@ class Controller: NSObject {
     private func getMaxFezOfVorgaenger(aktKnoten : Knoten) -> Int{
         var maxValue: Int = Int.min
         for vorgaenger in aktKnoten.vorgaenger {
-        //for i in 0..<aktKnoten.vorgaenger.count{
-        //    var vorgaenger = aktKnoten.vorgaenger[i]
             if vorgaenger.fez > maxValue{
                 maxValue = vorgaenger.fez
             }
@@ -311,8 +309,6 @@ class Controller: NSObject {
     private func getMinSazOfNachfolger(aktKnoten: Knoten) -> Int{
         var minValue = Int.max
         for nachfolger in aktKnoten.nachfolger {
-        //for i in 0..<aktKnoten.nachfolger.count{
-            //var nachfolger = aktKnoten.nachfolger[i]
             if nachfolger.saz < minValue{
                 minValue = nachfolger.saz
             }
@@ -351,7 +347,6 @@ class Controller: NSObject {
          * Freie Puffer 0, da FAZ==FEZ
          */
         aktKnoten.fp = self.getMinFazOfNachfolger(aktKnoten: aktKnoten) - aktKnoten.fez
-        //for nachfolger in aktKnoten.nachfolger {
         for i in 0..<aktKnoten.nachfolger.count{
             setFp(aktKnoten: &aktKnoten.nachfolger[i])
         }
@@ -370,9 +365,6 @@ class Controller: NSObject {
             return aktKnoten.fez
         }
         for nachfolger in aktKnoten.nachfolger {
-        //for i in 0..<aktKnoten.nachfolger.count{
-            //var nachfolger = aktKnoten.nachfolger[i]
-            
             if(nachfolger.faz < minValue){
                 minValue = nachfolger.faz
             }
@@ -390,7 +382,6 @@ class Controller: NSObject {
         /*
          * Bestimmung der kritischen Vorgänge ausgehend von jedem Startknoten
          */
-        //for startK in model.startknoten {
         for i in 0..<model.startknoten.count{
             var pfad:[Knoten] = []
             setKritischePfadeHelper(pfad: &pfad, aktKnoten: model.startknoten[i])
@@ -428,10 +419,7 @@ class Controller: NSObject {
             pfad.append(aktKnoten)
             // Führe für alle Nachfolger rekursiv die Methode setKritischePfadehelper aus
             // und durchlaufe so nach Backtraking den virtuellen Baum
-            for nachfolger in aktKnoten.nachfolger{
-            //for i in 0..<aktKnoten.nachfolger.count{
-                //var nachfolger = aktKnoten.nachfolger[i]
-                
+            for nachfolger in aktKnoten.nachfolger{                
                 self.setKritischePfadeHelper(pfad: &pfad, aktKnoten: nachfolger)
             }
         }
