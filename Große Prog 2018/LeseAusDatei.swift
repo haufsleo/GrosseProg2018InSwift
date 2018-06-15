@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Ermöglicht das Einlesen der Daten eines Models aus einer Datei
 public class LeseAusDatei{
     public func getModelAusDatei(path: String)->Model{
         var knoten: [Knoten] = []

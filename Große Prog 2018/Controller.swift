@@ -8,7 +8,17 @@
 
 import Foundation
 
-
+/**
+ * Hauptberechnungsmethode des Controllers.
+ *
+ * Falls noch nicht initialisiert wurde, wird auf Zyklen und Zusammenhängigkeit
+ * geprüft . Falls der Netzplan Zyklen enthällt, wird im Model in zyklus ein
+ * zyclus gespeichert. Wenn der Netzplan nicht nicht zusammenhängend ist, wird
+ * im Model isZusammenhaengend auf false gesetzt. Sonst auf true.
+ *
+ * Anschließend wird das Model initialisiert, also die kenngrößen berechnet und
+ * anschließend der kritische Pfad, falls er existiert, berechnet
+ */
 class Controller: NSObject {
     var model: Model
     var validationsListe: [Knoten] = []

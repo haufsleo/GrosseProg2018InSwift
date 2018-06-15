@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Ermöglicht zu einem Model die Ausgabe der kenngrößen und kritischen Pfade
+// auszugeben
 public class Ausgabe {
     private var model: Model
     
